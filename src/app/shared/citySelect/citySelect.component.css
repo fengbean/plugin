@@ -1,0 +1,7 @@
+select{
+  width: 120px;
+  height:30px;
+}
+select[disabled]{
+  background-color: #ebebe4;
+}

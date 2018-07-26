@@ -1,0 +1,25 @@
+<div class="wrapSelect">
+    <div class="erjiList " [class.erjiMenu]="isShowList">
+        <div>{{brforeSelected}}</div>
+        <div>
+            <span class="setIcon">
+                <input type="text" [(ngModel)]="selected" class="inputS" (click)="showList()" (blur)="close()" />
+                <img src="../../../assets/img/arr-donw-01.png" class="setP" *ngIf="!isShowList">
+                <img src="../../../assets/img/arr-up-01.png" class="setP" *ngIf="isShowList">
+            </span>
+        </div>
+        <div class="overHeight" *ngIf="isShowList">
+            <div class="erji erjiPad erjiHover">请选择</div>
+            <ng-container *ngFor="let yiji of list">
+                <div class="">
+                    <span class="erji erjiName">{{yiji.name}}</span>
+                    <div class="erjiList">
+                        <ng-container *ngFor="let erji of yiji.children">
+                            <div class="erji erjiPad erjiHover" (click)="select(erji)" [class.selectedOption]="erji.isSelect">{{erji.name}}</div>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

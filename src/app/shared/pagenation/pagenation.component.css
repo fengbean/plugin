@@ -1,0 +1,8 @@
+.forbid{
+    cursor: not-allowed;
+}
+.btnActive{
+    background: red;
+    color: #fff;
+    
+}

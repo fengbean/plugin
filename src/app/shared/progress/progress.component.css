@@ -1,0 +1,20 @@
+.pro{
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
+.line{
+  display: inline-block;
+  height:1px;
+  background: #ddd;
+  margin-bottom: 5px;
+}
+.pro img{
+  vertical-align: middle;
+}
+.already{
+  background: #008CFA;
+}
+.color{
+  color: #000;
+}

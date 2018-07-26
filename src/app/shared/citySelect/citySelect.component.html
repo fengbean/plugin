@@ -1,0 +1,14 @@
+<select [(ngModel)]="currentProvinceCode" >
+  <option value="">请选择省份</option>
+  <option [value]="p.code" *ngFor="let p of pro">{{p.name}}</option>
+</select>
+
+<select [(ngModel)]="currentCityCode" >
+  <option value="">请选择城市</option>
+  <option [value]="c.code" *ngFor="let c of cityArr">{{c.name}}</option>
+</select>
+
+<select [(ngModel)]="currentAreaCode" *ngIf="isShowThree==='3'" >
+  <option value="">请选择区域</option>
+  <option [value]="a.code" *ngFor="let a of areaArr">{{a.name}}</option>
+</select>

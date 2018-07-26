@@ -1,0 +1,10 @@
+<div>
+      <button class="firstpage" (click)="firstpage()" [class.forbid]="isFirst">首页</button>
+      <button class="prepage" (click)="minuspage()" [class.forbid]="isFirst">上一页</button>
+      <button  *ngFor="let page of arr">{{page}}</button>
+      <button class="nextpage" (click)="addpage()" [class.forbid]="isLast">下一页</button>
+      <button class="lastpage" (click)="lastpage()" [class.forbid]="isLast">尾页</button>
+      <span>第<span class="nowpage">{{nowpage}}</span>页</span>
+      <span>共<span class="datanum">{{totalitem}}</span>条</span> 
+      <span>总共<span class="totalpage">{{totalpage}}</span>页</span>
+    </div>

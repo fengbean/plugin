@@ -1,0 +1,175 @@
+* {box-sizing:border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana,sans-serif;}
+ 
+.month {
+    padding: 0;
+    width: 272px;
+    background: #1abc9c;
+}
+ 
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+ 
+.month ul li {
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+ 
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+ 
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+ 
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+    width: 272px;
+}
+ 
+.weekdays li {
+    display: inline-block;
+    width: 38px;
+    color: #666;
+    text-align: center;
+    width: 35px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+}
+ 
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+    width: 272px;
+}
+ 
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 42px;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color: #777;
+    width: 35px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+}
+.days li span{
+    padding: 5px;
+    cursor: pointer;
+ }
+ .days li span:hover{
+    /* background: #68F0D5; */
+    /* color: white !important */
+ }
+.days li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+.isSelect{
+    background: #68F0D5; 
+    color: white !important
+}
+/* 添加不同尺寸屏幕的样式 */
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {width: 13.1%;}
+}
+ 
+@media screen and (max-width: 420px) {
+    .weekdays li, .days li {width: 12.5%;}
+    .days li .active {padding: 2px;}
+}
+ 
+@media screen and (max-width: 290px) {
+    .weekdays li, .days li {width: 12.2%;}
+}
+.layui-laydate-footer {
+    border: 1px solid #e2e2e2;
+}
+
+.layui-laydate-footer {
+    width: 272px;
+    position: relative;
+    height: 46px;
+    line-height: 26px;
+    padding: 10px 20px;
+}
+.layui-laydate-footer span {
+    color: #5FB878;
+}
+
+.layui-laydate-footer span {
+    margin-right: 15px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 12px;
+}
+.laydate-footer-btns {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.laydate-footer-btns span {
+    height: 26px;
+    line-height: 26px;
+    margin: 0 0 0 -1px;
+    padding: 0 10px;
+    border: 1px solid #C9C9C9;
+    background-color: #fff;
+    white-space: nowrap;
+    vertical-align: top;
+    border-radius: 2px;
+}
+.time,.time-head{
+    width: 272px;
+    border: 1px solid #e2e2e2;
+}
+.time-head ul{
+    margin: 0;
+    padding: 0;
+}
+.time-head ul li{
+    display: inline-block;
+    width: 32%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+.time ul{
+    width: 32%;
+    overflow-y: auto;
+    display: inline-block;
+    height: 180px;
+    margin: 0;
+    padding:0;
+    text-align: center;
+}
+.time ul li{
+    height: 30px;
+    line-height:30px;
+    cursor: pointer;
+}
+.time-active{
+    background-color: #009688!important;
+    color: #fff!important;
+}
+.select-date{
+    border:1px solid #009688;
+}
+
+
