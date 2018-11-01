@@ -79,10 +79,14 @@ li{
 .itemLi:hover{
     background: #1890ff;
     cursor: pointer;
-    
+    color: #fff;
 }
 ul{
     margin: 0;
     padding: 0px;
     /* width: 200px; */
+}
+ul:first-child{
+    box-shadow: 0px 0px 5px #cacaca;
+    width: 200px;
 }

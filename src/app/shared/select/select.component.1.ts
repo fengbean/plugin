@@ -7,7 +7,7 @@ import {SelectComponent} from './select.component'
 @Component({
   selector: 'select-search',
   templateUrl: './select.component.1.html',
- styleUrls: ['./select.component.css'],
+//  styleUrls: ['./select.component.css'],
 })
 export class SelectShowComponent
 {
@@ -15,8 +15,9 @@ export class SelectShowComponent
     treeArrS;
     selectValue:string;
     onVoted(value){
-        this.selectValue=value;
-        console.log(value,this.selectValue)
+        this.selectValue=value[0];
+        this.showList=value[1]
+        console.log("value",value)
     }
 
     showList:boolean=false;

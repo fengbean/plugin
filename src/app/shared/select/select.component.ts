@@ -18,18 +18,20 @@ export class SelectComponent
     public isShowList=false;//下拉框
     public isSelect=false;//选中对象标识
     public brforeSelected;
+    closeList=false;
     @Input()
     treeArr;
     // @Input()
     // showInput=false;
-    @Output() voted = new EventEmitter<boolean>();
+    @Output() voted = new EventEmitter<any>();
     vote(name) {
         console.log("ddddd",name)
-        this.voted.emit(name);
+        this.voted.emit([name,this.closeList]);
         console.log("emit",name)
       }
       again(event){
         this.voted.emit(event);
+        console.log("event",event)
       }
 
     ngOnInit(){
