@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+##项目描述
+是一个angular插件集合，其中包括省市区三级联动，日期选择，分页，进度状态，无线树下拉选择搜索框。
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
