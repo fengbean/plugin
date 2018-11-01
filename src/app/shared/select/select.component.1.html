@@ -35,14 +35,14 @@
         </ng-container>
     </div>
 </ng-container> -->
-<!-- <div *ngIf="showInput" style="border: 1px solid #ddd;height: 30px;width: 200px;">
-    {{selectValue}} -->
+<div style="border: 1px solid #ddd;height: 30px;width: 200px;" (click)="showTree()">
+    {{selectValue}}
     <!-- <input *ngIf="showInput" type="text" [(ngModel)]="selectValue"> -->
-<!-- </div> -->
-
-<ul >
-    <li *ngFor="let item of treeArr">
-        <span (click)="vote(item.name)" class="itemLi" [style.padding-left.px]="item.resourceCode*5">{{item.name}}</span>
-        <selectss  [treeArr]="item.children" (voted)="again($event)"></selectss>
+</div>
+<selectss *ngIf="showList" [treeArr]="treeArrS" (voted)="onVoted($event,false)"></selectss>
+<!-- <ul >
+    <li *ngFor="let item of treeArr;let index=index;">
+        <span (click)="valuechange(item.name)" class="itemLi" [style.padding-left.px]="item.resourceCode*5">{{item.name}}</span>
+        
     </li>
-</ul>
+</ul> -->

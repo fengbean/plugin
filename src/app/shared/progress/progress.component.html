@@ -1,21 +1,21 @@
 <div >
   <span class="pro" [class.color]="step1">
-    <img src="../../../../assets/img/progress-17.png" *ngIf="step1"/>
-    <img src="../../../../assets/img/progress-23.png" *ngIf="step2 || step3 || done"/>
+    <img src="../../../assets/img/progress-17.png" *ngIf="step1"/>
+    <img src="../../../assets/img/progress-23.png" *ngIf="step2 || step3 || done"/>
     选择发布货品
   </span>
   <span class="line" [style.width.px]="widthP" [class.already]="step2 || step3 || done"></span>
   <span class="pro" [class.color]="step2">
-    <img src="../../../../assets/img/progress-21.png" *ngIf="step1"/>
-    <img src="../../../../assets/img/progress-18.png" *ngIf="step2" />
-    <img src="../../../../assets/img/progress-23.png" *ngIf="step3 || done"/>
+    <img src="../../../assets/img/progress-21.png" *ngIf="step1"/>
+    <img src="../../../assets/img/progress-18.png" *ngIf="step2" />
+    <img src="../../../assets/img/progress-23.png" *ngIf="step3 || done"/>
     编辑基本信息
   </span>
   <span class="line" [style.width.px]="widthP" [class.already]="done"></span>
   <span class="pro" [class.color]="step3">
-    <img src="../../../../assets/img/progress-22.png" *ngIf="step1 || step2" />
-    <img src="../../../../assets/img/progress-19.png" *ngIf="step3" />
-    <img src="../../../../assets/img/progress-23.png" *ngIf="done" />
+    <img src="../../../assets/img/progress-22.png" *ngIf="step1 || step2" />
+    <img src="../../../assets/img/progress-19.png" *ngIf="step3" />
+    <img src="../../../assets/img/progress-23.png" *ngIf="done" />
     编辑商品详情
   </span>
 </div>

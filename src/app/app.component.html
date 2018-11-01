@@ -1,90 +1,119 @@
+<p  hover>测试@hostlitsen</p>
+
+<div></div>
 <h1 *unlessButton="condition">Angular component</h1>
-   <citySelect
-    [isShowThree]="flag"
-    (onVotedpro)="onVotedpro($event)"
-    (onVotedcity)="onVotedcity($event)"
-    (onVotedarea)="onVotedarea($event)"
-    [currentProvinceCode]="setpro"
-    [currentCityCode]="setcity"
-    [currentAreaCode]="setarea"
-   ></citySelect>
+<h1 >Angular component{{'app.articles' | translate}}</h1>
+<img src="../assets/img/arr-donw-01.png" alt="">
+<div style="width: 550px;overflow-x: auto;">
+  <div echarts [options]="option" class=""></div>
+</div>
+
+<app-progress [step1]="true"></app-progress>
+
+  <!-- 二级选择 -->
+  <select-search [treeArrS]="uiTree"></select-search>
+<!--  -->
+<!-- <div draggable class="popup-win" style="width: 100px;height: 100px;position: absolute;background: red;"></div> -->
+<datepicker [showWitch]="'datetimepicker'" [setTime]="setTime" [isReadonly]="false"></datepicker>
+<datepicker [showWitch]="'daterangepicker'"></datepicker>
+<datepicker [showWitch]="'calendar'"></datepicker>
     <nav>
       <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
       <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
     </nav>
-    <div>
-        <div>
-         <div class="month">      
-           <ul>
-             <li class="prev" (click)="getLastMonth('lastYear')">《</li>
-             <li class="next" (click)="getLastMonth('nextYear')">》</li>
-             <li class="prev" (click)="getLastMonth('lastMonth')">❮</li>
-             <li class="next" (click)="getLastMonth('nextMonth')">❯</li>
-             <li style="text-align:center">
-               {{currentMonth+1}}月<br>
-               <span style="font-size:12px">{{currentYear}}年</span>
-             </li>
-           </ul>
-         </div>
-         <ul class="weekdays">
-           <li>日</li>
-           <li>一</li>
-           <li>二</li>
-           <li>三</li>
-           <li>四</li>
-           <li>五</li>
-           <li>六</li>
-         </ul>
-         <ul class="days">  
-            <ng-container *ngFor="let day of twoMonth;let i=index;">         
-              <li *ngIf="day.month!='next'&&i<=41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect">
-                <span [class.active]="day.name==currentDay" [style.cursor]="day.name<currentDay?'not-allowed':'pointer'" [style.color]="day.month!='current'?'#c5c5c5':''">
-                    <ng-container *ngIf="day.month=='current'">{{day.name}}</ng-container>
-                </span>
-              </li>
-            </ng-container>   
-          </ul>
-         <div class="month">      
-          <ul>
-            <li style="text-align:center">
-              {{currentMonth+2}}月<br>
-              <span style="font-size:12px">{{currentYear}}年</span>
-            </li>
-          </ul>
-        </div>
-         <ul class="days">  
-            <ng-container *ngFor="let day of twoMonth;let i=index;">
-              <li *ngIf="day.month!='next'&&i>41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect">
-                <span [style.color]="day.month!='current'?'#c5c5c5':''">
-                    <ng-container *ngIf="day.month=='current'">{{day.name}}</ng-container>
-                </span>
-              </li>
-            </ng-container>
-          </ul>
-       </div>
-     </div>
+
     <router-outlet></router-outlet>
     <router-outlet name="popup"></router-outlet>
-   <!-- <pagenation
-    [totalitem]="totalitems"
-    [pageitem]="pageitems"
-    (changepage)="changepages($event)"
-   ></pagenation> -->
-   <br>
-   <select-search></select-search>
-<!--<tree-root [nodes]="nodes" [options]="options"></tree-root>-->
-<!--引入根组件-->
-<!-- <nz-root>
-  </nz-root> -->
+
+
+
+<!-- <tree-root [nodes]="nodes" [options]="options"></tree-root> -->
   <!-- <div echarts [options]="chartOption" class="demo-chart" style="height: 400px;"></div> -->
   <h1 *appUnless="condition">Hello {{name}}</h1>
 
 
-  <!-- 日期 -->
+  <!-- 无线循环数 -->
+
+   <!-- 分页 -->
+   <pagenation
+    [totalitem]="totalitems"
+    [pageitem]="pageitems"
+    (changepage)="changepages($event)"
+   ></pagenation>
+   <br>
+
+  <br>
+<!-- 省市区三级联动 -->
+<citySelect
+[isShowThree]="flag"
+(onVotedpro)="onVotedpro($event)"
+(onVotedcity)="onVotedcity($event)"
+(onVotedarea)="onVotedarea($event)"
+[currentProvinceCode]="setpro"
+[currentCityCode]="setcity"
+[currentAreaCode]="setarea"
+></citySelect>
+<br>
+
+<!-- 日期连续选择 -->
+<br/>
+<!-- <input [(ngModel)]="time" placeholder="请选择日期区间"/>
+<br/>
   <div>
+      <div>
+      <div class="month">
+        <ul>
+          <li class="prev" (click)="getLastMonth('lastYear')">《</li>
+          <li class="next" (click)="getLastMonth('nextYear')">》</li>
+          <li class="prev" (click)="getLastMonth('lastMonth')">❮</li>
+          <li class="next" (click)="getLastMonth('nextMonth')">❯</li>
+          <li style="text-align:center">
+            {{currentMonth+1}}月<br>
+            <span style="font-size:12px">{{currentYear}}年</span>
+          </li>
+        </ul>
+      </div>
+      <ul class="weekdays">
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+      </ul>
+      <ul class="days">
+          <ng-container *ngFor="let day of twoMonth;let i=index;">
+            <li *ngIf="day.month!=(currentMonth+2)&&i<=41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect&&day.month==(currentMonth+1)">
+              <span [class.active]="day.name==currentDay" [style.cursor]="day.name<currentDay&&day.month>=(currentMonthinvariant+1)?'not-allowed':'pointer'" [style.color]="day.month!=(currentMonth+1)?'#c5c5c5':''">
+                  <ng-container *ngIf="day.month==(currentMonth+1)">{{day.name}}</ng-container>
+              </span>
+            </li>
+          </ng-container>
+        </ul>
+      <div class="month">
+        <ul>
+          <li style="text-align:center">
+            {{currentMonth+2}}月<br>
+          </li>
+        </ul>
+      </div>
+      <ul class="days">
+          <ng-container *ngFor="let day of twoMonth;let i=index;">
+            <li *ngIf="day.month!=(currentMonth+3)&&i>41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect&&day.month==(currentMonth+2)">
+              <span>
+                  <ng-container *ngIf="day.month==(currentMonth+2)">{{day.name}}</ng-container>
+              </span>
+            </li>
+          </ng-container>
+        </ul>
+    </div>
+  </div> -->
+  <!-- 日期 -->
+  <!-- <div>
       <div >
-       <div class="month">      
+       <div class="month">
          <ul>
            <li class="prev" (click)="getLastMonth('lastYear')">《</li>
            <li class="next" (click)="getLastMonth('nextYear')">》</li>
@@ -105,15 +134,19 @@
          <li>五</li>
          <li>六</li>
        </ul>
-       <ul class="days">  
-         <li *ngFor="let day of currentShow"><span [class.active]="day.name==currentDay" [style.color]="day.month!='current'?'#c5c5c5':''">{{day.name}}</span></li>
+       <ul class="days date-select">
+         <li *ngFor="let day of currentShow">
+           <span [class.active]="day.name==currentDay&&day.month==(currentMonthinvariant+1)" [style.color]="day.month!=(currentMonth+1)?'#c5c5c5':''">
+             {{day.name}}
+            </span>
+        </li>
        </ul>
      </div>
-   </div>
+   </div> -->
    <!-- 日期时间 -->
-   <div>
+   <!-- <div>
       <div *ngIf="selectDate">
-       <div class="month">      
+       <div class="month">
          <ul>
            <li class="prev" (click)="getLastMonth('lastYear')">《</li>
            <li class="next" (click)="getLastMonth('nextYear')">》</li>
@@ -134,12 +167,14 @@
          <li>五</li>
          <li>六</li>
        </ul>
-       <ul class="days">  
-         <li *ngFor="let day of currentShow" [class.select-date]="day.name==selectedDate" (click)="changeDate(day)"><span [class.active]="day.name==currentDay" [style.color]="day.month!='current'?'#c5c5c5':''">{{day.name}}</span></li>
+       <ul class="days date-select">
+         <li *ngFor="let day of currentShow" [class.select-date]="day.name==selectedDate" (click)="changeDate(day)">
+           <span [class.active]="day.name==currentDay&&day.month==(currentMonthinvariant+1)" [style.color]="day.month!=(currentMonth+1)?'#c5c5c5':''">{{day.name}}</span>
+          </li>
        </ul>
      </div>
      <div *ngIf="!selectDate" >
-         <div class="month">      
+         <div class="month">
              <ul>
                <li style="text-align:center">
                  选择时间
@@ -174,4 +209,4 @@
        <span lay-type="confirm" class="laydate-btns-confirm">确定</span>
        </div>
      </div>
-   </div>
+   </div> -->

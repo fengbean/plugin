@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -21,6 +21,22 @@ import { UnlessDirective } from './unless.directive';
 import {DirectiveModule} from './directive/directive.module'
 // import { NgZorroAntdModule } from 'ng-zorro-antd';
 // import { TreeModule } from 'angular-tree-component';
+import {DatepickerModule} from './shared/datepicker/datepicker.module'
+import {Draggable} from './Draggable.directive';
+import {Hover} from './hover.directive';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+
+import {ProgressModule} from './shared/progress/progress.module';
+
+// AoT requires an exported function for factories
+// export function createTranslateLoader(http: HttpClient) {
+//   return new TranslateHttpLoader(http, './assets/i18n', '.json');
+// }
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +44,9 @@ import {DirectiveModule} from './directive/directive.module'
     PageNotFoundComponent,
     LoginComponent,
     ComposeMessageComponent,
-    UnlessDirective
+    UnlessDirective,
+    Draggable,
+    Hover
   ],
   imports: [
     BrowserModule,
@@ -41,8 +59,18 @@ import {DirectiveModule} from './directive/directive.module'
     CitySelectModule,
     PagenationModule,
     SelectModule,
+    ProgressModule,
     NgxEchartsModule,
-    DirectiveModule
+    DirectiveModule,
+    DatepickerModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  })
     // TreeModule
     // NgZorroAntdModule.forRoot()
   ],

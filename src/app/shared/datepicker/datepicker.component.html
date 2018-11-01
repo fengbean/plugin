@@ -1,0 +1,248 @@
+  <!-- 日期时间 -->
+  <div *ngIf="showWitch=='datetimepicker'" style="position: relative;">
+      <!-- <h2>日期时间选择</h2> -->
+    <p class="showTime" (click)="showPop()">{{currentDetailTime}}</p>
+    <div class="mask" *readonly="isReadonly"></div>
+    <ng-container *ngIf="showPopTimePicker">
+      <div *ngIf="selectDate">
+      <div class="month">      
+        <ul>
+          <li class="prev" (click)="getLastMonth('lastYear')">《</li>
+          <li class="next" (click)="getLastMonth('nextYear')">》</li>
+          <li class="prev" (click)="getLastMonth('lastMonth')">❮</li>
+          <li class="next" (click)="getLastMonth('nextMonth')">❯</li>
+          <li style="text-align:center">
+            {{currentMonth+1}}月<br>
+            <span style="font-size:12px">{{currentYear}}年</span>
+          </li>
+        </ul>
+      </div>
+      <ul class="weekdays">
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+      </ul>
+      <ul class="days date-select date-time">  
+        <li *ngFor="let day of currentShow" [class.select-date]="day.name==selectedDate&&selectedMonth==day.month" (click)="changeDate(day)">
+          <span [style.color]="day.month!=(currentMonth+1)?'#c5c5c5':''">{{day.name}}</span><!--[class.active]="day.name==currentDay&&day.month==(currentMonthinvariant+1)" -->
+          </li>
+      </ul>
+      </div>
+      <div *ngIf="!selectDate" >
+          <div class="month">      
+              <ul>
+                <li style="text-align:center">
+                  选择时间
+                </li>
+              </ul>
+            </div>
+            <div class="time-head">
+              <ul>
+                <li>时</li>
+                <li>分</li>
+                <li>秒</li>
+              </ul>
+            </div>
+            <div class="time">
+              <ul>
+                <li *ngFor="let hour of hourArr" [class.time-active]="hour==selectedhour" (click)="selectHour(hour)">{{hour}}</li>
+              </ul>
+              <ul>
+                  <li *ngFor="let minites of minitesArr" [class.time-active]="minites==selectedminites" (click)="selectMinites(minites)">{{minites}}</li>
+                </ul>
+              <ul>
+                  <li *ngFor="let second of secondArr" [class.time-active]="second==selectedsecond" (click)="selectSecond(second)">{{second}}</li>
+                </ul>
+            </div>
+      </div>
+      <div class="layui-laydate-footer">
+        <span lay-type="date" class="laydate-btns-time" *ngIf="selectDate" (click)="changeSelect('0')">选择时间</span>
+        <span lay-type="date" class="laydate-btns-time" *ngIf="!selectDate" (click)="changeSelect('1')">返回日期</span>
+        <div class="laydate-footer-btns">
+        <span lay-type="confirm" class="laydate-btns-confirm" (click)="changeSelect('2')">确定</span>
+        </div>
+      </div>
+  </ng-container>
+
+ </div>
+
+<!-- 日期连续选择 -->
+<br/>
+
+<div *ngIf="showWitch=='daterangepicker'">
+    <h2>日期连续选择</h2>
+<input [(ngModel)]="time" placeholder="请选择日期区间"  (click)="showPop1()" class="showTime"/>
+<br/>
+<ng-container *ngIf="showPopRangePicker">
+  <div>
+      <div>
+      <div class="month">      
+        <ul>
+          <li class="prev" (click)="getLastMonth('lastYear')">《</li>
+          <li class="next" (click)="getLastMonth('nextYear')">》</li>
+          <li class="prev" (click)="getLastMonth('lastMonth')">❮</li>
+          <li class="next" (click)="getLastMonth('nextMonth')">❯</li>
+          <li style="text-align:center">
+            {{currentMonth+1}}月<br>
+            <span style="font-size:12px">{{currentYear}}年</span>
+          </li>
+        </ul>
+      </div>
+      <ul class="weekdays">
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+      </ul>
+      <ul class="days">  
+          <ng-container *ngFor="let day of twoMonth;let i=index;">         
+            <li *ngIf="day.month!=(currentMonth+2)&&i<=41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect&&day.month==(currentMonth+1)">
+              <span [style.cursor]="day.name>=currentDay&&day.month==(currentMonthinvariant+1)||day.month>(currentMonthinvariant+1)?'pointer':'not-allowed'" [style.color]="day.month!=(currentMonth+1)?'#c5c5c5':''"><!-- [class.active]="day.name==currentDay"  [style.color]="day.month!='current'?'#c5c5c5':''"-->
+                  <ng-container *ngIf="day.month==(currentMonth+1)">{{day.name}}</ng-container><!-- *ngIf="day.month=='current'"-->
+              </span>
+            </li>
+          </ng-container>   
+        </ul>
+      <div class="month">      
+        <ul>
+          <li style="text-align:center">
+            {{currentMonth+2}}月<br>
+          </li>
+        </ul>
+      </div>
+      <ul class="days">  
+          <ng-container *ngFor="let day of twoMonth;let i=index;">
+            <li *ngIf="day.month!=(currentMonth+3)&&i>41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect&&day.month==(currentMonth+2)">
+              <span><!-- [style.color]="day.month!='current'?'#c5c5c5':''"-->
+                  <ng-container *ngIf="day.month==(currentMonth+2)">{{day.name}}</ng-container><!-- *ngIf="day.month=='current'"-->
+              </span>
+            </li>
+          </ng-container>
+        </ul>
+    </div>
+  </div>
+</ng-container>
+</div>
+
+<div *ngIf="showWitch=='daterangepicker'">
+  <h2>日期连续选择</h2>
+<input [(ngModel)]="time" placeholder="请选择日期区间"  (click)="showPop1()" class="showTime"/>
+<br/>
+<ng-container>
+<div>
+    <div>
+    <div class="month">      
+      <ul>
+        <!-- <li class="prev" (click)="getLastMonth('lastYear')">《</li>
+        <li class="next" (click)="getLastMonth('nextYear')">》</li>
+        <li class="prev" (click)="getLastMonth('lastMonth')">❮</li>
+        <li class="next" (click)="getLastMonth('nextMonth')">❯</li> -->
+        <li style="text-align:center">
+          
+          <span style="font-size:12px">{{currentYear}}年</span> {{currentMonth+1}}月
+        </li>
+      </ul>
+    </div>
+    <ul class="weekdays">
+      <li>日</li>
+      <li>一</li>
+      <li>二</li>
+      <li>三</li>
+      <li>四</li>
+      <li>五</li>
+      <li>六</li>
+    </ul>
+    <ul class="days">  
+        <ng-container *ngFor="let day of twoMonth;let i=index;">         
+          <li *ngIf="day.month!=(currentMonth+2)&&i<=41" (click)="selectStart(day,i)" [style.color]="day.name>=currentDay&&day.month==(currentMonthinvariant+1)||day.month>(currentMonthinvariant+1)?'#000':'#777'"  [class.isSelect]="day.isSelect&&day.month==(currentMonth+1)">
+            <span><!-- [class.active]="day.name==currentDay"  [style.color]="day.month!='current'?'#c5c5c5':''"-->
+                <ng-container *ngIf="day.month==(currentMonth+1)">{{day.name}}</ng-container><!-- *ngIf="day.month=='current'"-->
+            </span>
+          </li>
+        </ng-container>   
+      </ul>
+    <div class="month">      
+      <ul>
+        <li style="text-align:center">
+          {{currentMonth+2}}月<br>
+        </li>
+      </ul>
+    </div>
+    <ul class="days">  
+        <ng-container *ngFor="let day of twoMonth;let i=index;">
+          <li *ngIf="day.month!=(currentMonth+3)&&i>41" (click)="selectStart(day,i)" [class.isSelect]="day.isSelect&&day.month==(currentMonth+2)">
+            <span><!-- [style.color]="day.month!='current'?'#c5c5c5':''"-->
+                <ng-container *ngIf="day.month==(currentMonth+2)">{{day.name}}</ng-container><!-- *ngIf="day.month=='current'"-->
+            </span>
+          </li>
+        </ng-container>
+      </ul>
+  </div>
+</div>
+</ng-container>
+</div>
+
+  <!-- 日期 -->
+  <div *ngIf="showWitch=='calendar'">
+      <div>
+          <span>换肤：</span>
+          <button (click)="color('style0')">默认绿色</button>
+          <button (click)="color('style1')">红色</button>
+          <button (click)="color('style2')">蓝色</button>
+        </div>
+        <br/>
+        <div>
+          <span>语言</span>
+          <button (click)="language('zh')">中文</button>
+          <button (click)="language('en')">英文</button>
+        </div>
+        <br/>
+      <div [class]="badCurly" >
+       <div class="month">      
+         <ul>
+           <li class="prev" (click)="getLastMonth('lastYear')">《</li>
+           <li class="next" (click)="getLastMonth('nextYear')">》</li>
+           <li class="prev" (click)="getLastMonth('lastMonth')">❮</li>
+           <li class="next" (click)="getLastMonth('nextMonth')">❯</li>
+           <li style="text-align:center">
+             {{currentMonth+1}}{{'app.月' | translate}}<br>
+             <span style="font-size:12px">{{currentYear}}{{'app.年' | translate}}</span>
+           </li>
+         </ul>
+       </div>
+       <ul class="weekdays">
+         <li>{{'app.七' | translate}}</li>
+         <li>{{'app.一' | translate}}</li>
+         <li>{{'app.二' | translate}}</li>
+         <li>{{'app.三' | translate}}</li>
+         <li>{{'app.四' | translate}}</li>
+         <li>{{'app.五' | translate}}</li>
+         <li>{{'app.六' | translate}}</li>
+       </ul>
+       <ul class="days date-select calender">  
+         <li *ngFor="let day of currentShow">
+           <span [class.active]="day.name==currentDay&&day.month==(currentMonthinvariant+1)" [style.color]="day.month!=(currentMonth+1)?'#c5c5c5':''">
+             {{day.name}}{{day.fes}}
+            </span>
+        </li>
+       </ul>
+     </div>
+   </div>
+ 
+
+   
+
+
+
+
+
+
+
+   

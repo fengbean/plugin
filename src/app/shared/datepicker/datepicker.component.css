@@ -62,7 +62,7 @@ body {font-family: Verdana,sans-serif;}
     text-align: center;
     margin-bottom: 5px;
     font-size:12px;
-    color: #777;
+    /* color: #777; */
     width: 35px;
     height: 30px;
     padding: 5px;
@@ -174,4 +174,23 @@ body {font-family: Verdana,sans-serif;}
 .date-select li{
     width: 45px;
 }
-
+.date-time li{
+    width: 38px;
+}
+.calender li{
+    width: 38px;
+}
+.showTime{
+    width: 200px;
+    border: 1px solid #ddd;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 10px;
+}
+.mask{
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 35px;
+    background: #dddddd8f;
+}

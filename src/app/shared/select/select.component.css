@@ -66,3 +66,23 @@
     overflow: auto;
     font-size: 12px;
 }
+li{
+    list-style: none;
+}
+.itemLi{
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    width: 200px;
+    
+}
+.itemLi:hover{
+    background: #1890ff;
+    cursor: pointer;
+    
+}
+ul{
+    margin: 0;
+    padding: 0px;
+    /* width: 200px; */
+}
